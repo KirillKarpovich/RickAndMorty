@@ -13,6 +13,10 @@
 		689DEAAB295300C90061A10D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 689DEAA9295300C90061A10D /* Main.storyboard */; };
 		689DEAAD295300CB0061A10D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 689DEAAC295300CB0061A10D /* Assets.xcassets */; };
 		689DEAB0295300CB0061A10D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 689DEAAE295300CB0061A10D /* LaunchScreen.storyboard */; };
+		689DEAB829530A4F0061A10D /* PictureViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689DEAB729530A4F0061A10D /* PictureViewCell.swift */; };
+		689DEABA29531A9A0061A10D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689DEAB929531A9A0061A10D /* NetworkManager.swift */; };
+		689DEABC2953229F0061A10D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689DEABB2953229F0061A10D /* Card.swift */; };
+		689DEAC029532D750061A10D /* CharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689DEABF29532D750061A10D /* CharactersResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		689DEAAC295300CB0061A10D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		689DEAAF295300CB0061A10D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		689DEAB1295300CB0061A10D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		689DEAB729530A4F0061A10D /* PictureViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewCell.swift; sourceTree = "<group>"; };
+		689DEAB929531A9A0061A10D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		689DEABB2953229F0061A10D /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		689DEABF29532D750061A10D /* CharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,35 @@
 		689DEAA2295300C90061A10D /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				689DEABE29532D4F0061A10D /* Services */,
+				689DEABD29532D400061A10D /* Models */,
 				689DEAA3295300C90061A10D /* AppDelegate.swift */,
 				689DEAA5295300C90061A10D /* SceneDelegate.swift */,
 				689DEAA7295300C90061A10D /* ViewController.swift */,
+				689DEAB729530A4F0061A10D /* PictureViewCell.swift */,
 				689DEAA9295300C90061A10D /* Main.storyboard */,
-				689DEAAC295300CB0061A10D /* Assets.xcassets */,
 				689DEAAE295300CB0061A10D /* LaunchScreen.storyboard */,
+				689DEAAC295300CB0061A10D /* Assets.xcassets */,
 				689DEAB1295300CB0061A10D /* Info.plist */,
 			);
 			path = RickAndMorty;
+			sourceTree = "<group>";
+		};
+		689DEABD29532D400061A10D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				689DEABB2953229F0061A10D /* Card.swift */,
+				689DEABF29532D750061A10D /* CharactersResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		689DEABE29532D4F0061A10D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				689DEAB929531A9A0061A10D /* NetworkManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +166,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				689DEABA29531A9A0061A10D /* NetworkManager.swift in Sources */,
+				689DEABC2953229F0061A10D /* Card.swift in Sources */,
 				689DEAA8295300C90061A10D /* ViewController.swift in Sources */,
 				689DEAA4295300C90061A10D /* AppDelegate.swift in Sources */,
 				689DEAA6295300C90061A10D /* SceneDelegate.swift in Sources */,
+				689DEAC029532D750061A10D /* CharactersResponse.swift in Sources */,
+				689DEAB829530A4F0061A10D /* PictureViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
