@@ -17,27 +17,36 @@ class PictureViewCell: UICollectionViewCell {
     
     @IBOutlet var firstSeen: UILabel!
     
-    
+    var status = String()
     
     
     func configure(with card: Card) {
         name.text = card.name
+        status = card.status
+        
+        
+        let firstString = "First seen: "
+        let lastString = "Last seen: "
+        
+        let attributedString = NSMutableAttributedString(string:card.origin.name)
+        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
+        let boldString = NSMutableAttributedString(string: firstString, attributes:attrs)
+        attributedString.insert(boldString, at: 0)
+        firstSeen.attributedText = attributedString
+        
+        let attributedStringTwo = NSMutableAttributedString(string:card.location.name)
+        let boldStringTwo = NSMutableAttributedString(string: lastString, attributes:attrs)
+        attributedStringTwo.insert(boldStringTwo, at: 0)
+        lastLocation.attributedText = attributedStringTwo
+
         
         self.imageView.layer.cornerRadius = 20
         self.imageView.layer.borderWidth = 2
         
         contentView.layer.cornerRadius = 20
-        contentView.layer.borderWidth = 2
-        contentView.layer.borderColor = UIColor.clear.cgColor
+        contentView.layer.borderWidth = 3
+        contentView.layer.borderColor = UIColor.black.cgColor
         contentView.layer.masksToBounds = true
-
-
-        layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
-        layer.shadowRadius = 2.0
-        layer.shadowOpacity = 1.0
-        layer.masksToBounds = false
-        layer.shadowPath = UIBezierPath(roundedRect:bounds, cornerRadius:contentView.layer.cornerRadius).cgPath
         
         
         guard let url = URL(string: card.image) else {

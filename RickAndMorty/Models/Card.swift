@@ -12,5 +12,14 @@ struct Card: Decodable {
     
     let name: String
     let image: String
+    let origin: Name
+    let location: Name
+    let status: String
     
+}
+
+extension Card {
+    struct Name: Decodable{
+        let name: String
+    }
 }
