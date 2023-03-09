@@ -17,7 +17,6 @@ class DetailViewController: UIViewController {
     var image: UIImage?
     var name: String?
     var status: String!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +24,10 @@ class DetailViewController: UIViewController {
         imageViewDetail.image = image
         nameDetail.text = name
         
-       
         statusDetail.text = "Status: " + status
         switch status {
         case "Alive":
-            statusDetail.textColor = .green
+            statusDetail.textColor = .white
         case "Dead":
             statusDetail.textColor = .red
         default:
@@ -39,5 +37,4 @@ class DetailViewController: UIViewController {
         imageViewDetail.layer.cornerRadius = 20
         imageViewDetail.layer.borderWidth = 2
     }
-
 }

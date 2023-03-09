@@ -7,14 +7,12 @@
 
 import Foundation
 
+
 class NetworkManager {
     
-    func getData(completion: @escaping ([Card]) -> Void) {
-        
-        guard let url = URL(string: "https://rickandmortyapi.com/api/character") else { return }
-        
+    func getData(page: Int, completion: @escaping ([Card]) -> Void) {
+        guard let url = URL(string: "https://rickandmortyapi.com/api/character?page=\(Constants.currentPage)") else { return }
         let session = URLSession.shared
-        
         let dataTask = session.dataTask(with: url) { data, response, error in
             if error != nil || data == nil {
                 return
@@ -22,7 +20,6 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(CharactersResponse.self, from: data!)
-//                response.results.first?.name
                 completion(response.results)
             }
             catch {

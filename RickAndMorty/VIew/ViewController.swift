@@ -22,17 +22,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
-        networkManager.getData { response in
+        networkManager.getData(page: Constants.currentPage) { response in
             DispatchQueue.main.async { [weak self] in
                 self?.cards = response
                 self?.collectionView.reloadData()
             }
         }
-        
-        
+            
         title = "Rick and Morty"
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = UIColor.systemGreen
+        navigationController?.navigationBar.tintColor = .black
         
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
@@ -41,7 +42,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if searchController.isActive && searchController.searchBar.text != "" {
@@ -89,6 +89,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.reloadData()
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == cards.count - 5 {
+            Constants.currentPage += 1
+            if Constants.currentPage <= Constants.totalPages {
+                networkManager.getData(page: Constants.currentPage) { response in
+                    DispatchQueue.main.async { [weak self] in
+                        self?.cards += response
+                        self?.collectionView.reloadData()
+                    }
+                }
+            }
+        }
+    }
 }
 
 

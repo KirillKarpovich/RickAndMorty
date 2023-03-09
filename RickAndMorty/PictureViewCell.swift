@@ -19,6 +19,23 @@ class PictureViewCell: UICollectionViewCell {
     
     var status = String()
     
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                UIView.animate(withDuration: 0.25) {
+                    self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                }
+            } else {
+                UIView.animate(withDuration: 0.25) {
+                    self.transform = .identity
+                }
+            }
+        }
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
     
     func configure(with card: Card) {
         name.text = card.name
@@ -48,7 +65,6 @@ class PictureViewCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.black.cgColor
         contentView.layer.masksToBounds = true
         
-        
         guard let url = URL(string: card.image) else {
             return
         }
@@ -63,13 +79,8 @@ class PictureViewCell: UICollectionViewCell {
                 return
             }
           
-            DispatchQueue.main.async {
-                self.imageView.image = image
-            }
-            
+            DispatchQueue.main.async { self.imageView.image = image }
         }
         task.resume()
     }
-
-
 }
